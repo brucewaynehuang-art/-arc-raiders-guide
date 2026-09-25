@@ -1,0 +1,78 @@
+---
+const navLinks = [
+  { label: 'Getting Started', href: '/getting-started' },
+  { label: 'Maps', href: '/maps' },
+  { label: 'Weapons', href: '/weapons' },
+  { label: 'Skills', href: '/loadouts' },
+  { label: 'Workshop', href: '/workshop' },
+  { label: 'ARC Enemies', href: '/enemies' },
+  { label: 'Seasons', href: '/seasons' },
+  { label: 'FAQ', href: '/faq' },
+];
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      RUST<span>WATCH</span>
+    </a>
+    <nav class="nav">
+      <ul>
+        {navLinks.map(link => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-surface);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: 0.02em;
+  }
+
+  .logo span { color: var(--color-rust); }
+  .logo:hover { text-decoration: none; }
+
+  .nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav a {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+
+  .nav a:hover {
+    color: var(--color-rust-bright);
+    text-decoration: none;
+  }
+
+  @media (max-width: 900px) {
+    .nav { display: none; }
+  }
+</style>

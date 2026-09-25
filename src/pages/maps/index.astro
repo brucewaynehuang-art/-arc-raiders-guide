@@ -1,0 +1,61 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { maps } from '../../data/game.js';
+---
+<ContentLayout
+  title="All Maps"
+  description="All six ARC Raiders maps — Dam Battlegrounds, Buried City, Spaceport, Blue Gate, Stella Montis and Riven Tides — with difficulty ratings and what each is best farmed for."
+  eyebrow="Maps"
+  heading="Six battlegrounds, six reasons to drop"
+  lede="Each map rewards something different. Picking the right one for what you need that session matters more than raw skill."
+>
+  <div class="map-grid">
+    {maps.map(m => (
+      <a class="hud-card map-card" href={`/maps/${m.slug}`}>
+        <span class="tag">{m.difficulty}</span>
+        <h3>{m.name}</h3>
+        <p>{m.blurb}</p>
+        <p class="best-for">Best for: <strong>{m.bestFor}</strong></p>
+      </a>
+    ))}
+  </div>
+
+  <h2>Map conditions change the rules</h2>
+  <p>
+    Maps run modified variants that cycle on a schedule. There are two tiers —
+    Minor and Major — plus a separate ARC Operations variant. Minor conditions
+    add events that boost particular loot types, and some trials can only be
+    completed while one is active. Major conditions change the atmosphere and
+    mechanics of the map outright, raising both difficulty and loot value.
+  </p>
+  <p>
+    Named conditions in rotation include EM Storm, Hurricane, Bird City,
+    Flashpoint and Night Raids. As of update 1.42.0 the schedule is offset by
+    region rather than run globally, so condition timings now line up with local
+    peak hours instead of a single worldwide clock.
+  </p>
+
+  <h2>Which map should you actually run?</h2>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead><tr><th>Goal</th><th>Map</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Learning the game</strong></td><td>Dam Battlegrounds</td><td>Lowest risk in the rotation.</td></tr>
+        <tr><td><strong>Farming coins</strong></td><td>Buried City or Stella Montis</td><td>Best loot value per run.</td></tr>
+        <tr><td><strong>Boss farming</strong></td><td>Dam Battlegrounds</td><td>Community-standard boss farm.</td></tr>
+        <tr><td><strong>PvP</strong></td><td>Buried City</td><td>Highest player traffic of any map.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</ContentLayout>
+
+<style>
+  .map-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .map-card { color: var(--color-text); display: block; }
+  .map-card:hover { text-decoration: none; border-color: var(--color-arc-teal); }
+  .map-card p { font-size: 0.92rem; }
+  .best-for { margin-bottom: 0; font-size: 0.85rem; }
+  .best-for strong { color: var(--color-rust-bright); }
+  @media (max-width: 900px) { .map-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .map-grid { grid-template-columns: 1fr; } }
+</style>

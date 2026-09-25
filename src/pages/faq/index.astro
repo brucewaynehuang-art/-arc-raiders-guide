@@ -1,0 +1,82 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+
+const faqs = [
+  { q: 'What is the best weapon in ARC Raiders?', a: 'The Anvil, Ferro, Dolabra, Tempest and Renegade sit at the top of current rankings. If you want one answer: the Ferro. It requires no blueprint, costs five metal parts and two rubber, and still competes with Rare and Epic weapons — nothing else in the game offers that ratio of performance to cost.' },
+  { q: 'What is the best weapon for beginners?', a: 'Ferro as your primary, Stitcher as your secondary. Both are craftable without blueprints, both use cheap ammo, and losing them costs you almost nothing. Move to an Anvil secondary once heavy ammo becomes sustainable for your runs.' },
+  { q: 'Which map should I play first?', a: 'Dam Battlegrounds. It carries the lowest risk of any map in rotation and is the standard community pick for learning. Avoid Buried City early — it has the heaviest player traffic in the game.' },
+  { q: 'Which skill should I unlock first?', a: 'Marathon Runner in the Mobility tree, maxed across all five ranks. Starting stamina is severely limiting and this is the largest single quality-of-life improvement available early.' },
+  { q: 'How many skill points do you get?', a: 'Roughly 75 base points, with no free respecs. Expeditions grant permanent bonus points on top, currently capped at 15.' },
+  { q: 'Can you play ARC Raiders solo?', a: 'Yes. Matchmaking generally places solo players against other solos. Since January 2026 solo players can also opt into the trio queue for higher rewards if they want the extra risk.' },
+  { q: 'How do you beat the Queen?', a: 'Break the leg joints to force a knockdown, dump heavy damage into the exposed core while it is down, then reset behind cover and clear the Rocketeers it calls in before repeating. It is a stagger loop, not a damage race. Expect a long fight — during an early playtest it was killed only 58 times across roughly four million raids.' },
+  { q: 'How do you beat the Matriarch?', a: 'Do not shoot while its blue shield is up — it takes no damage. When the shield drops, put Hullcracker rounds into the face to break the outer plating and expose the core, then keep hitting that point. It calls in Bastions and Rocketeers, so bring a full team and Wolfpack grenades.' },
+  { q: 'Why is my Hullcracker doing no damage to players?', a: 'It is working as intended. The Hullcracker deals zero damage to other Raiders — it exists purely to break ARC machines. Never run it as your only weapon.' },
+  { q: 'What happened to the Kettle?', a: 'Two separate nerfs. Patch 1.11.0 cut its fire rate from 600 to 450 RPM, targeting players using macros to fire it faster than intended. The Shrouded Sky patch then reduced base damage from 10 to 8.5. It still rewards accurate headshot play but no longer justifies a slot over a Renegade or Ferro.' },
+  { q: 'What are map conditions?', a: 'Rotating modifiers that change how a map plays. Minor conditions add events that boost certain loot types; Major conditions change the atmosphere and mechanics outright, raising both difficulty and loot value. There is also a separate ARC Operations variant. Since update 1.42.0 the schedule is offset by region rather than global.' },
+  { q: 'What is an Expedition?', a: 'A voluntary character reset. You depart, lose your progress, and receive permanent rewards in exchange — bonus skill points, stash space, and cosmetics that carry across every future run. The fifth expedition ran September 8–29, 2026 and was the last of the year; Embark has said the system returns in 2027 with significant changes.' },
+  { q: 'Is Cred still in the game?', a: 'No. Cred was retired with the Frozen Trail update on October 8, 2026, and any leftover Cred expired. A different reward system replaced it. Rewards already claimed were kept.' },
+  { q: 'How do you get weapon blueprints?', a: 'Blueprints drop during raids. Most weapons — around 17 of them — are blueprint-locked and cannot be crafted until you find one. Some, including the Anvil, can be purchased from a dealer instead if the drop refuses to appear.' },
+  { q: 'What do the armor colours on ARC machines mean?', a: 'White parts are unarmored and take full damage from anything. Grey parts are armored and soak damage. Yellow marks a true weak point and is worth repositioning to hit.' },
+];
+---
+<ContentLayout
+  title="FAQ"
+  description="Answers to the most common ARC Raiders questions: best weapons, first map, skill priorities, boss strategies and current game systems."
+  eyebrow="FAQ"
+  heading="Short answers to common questions"
+  lede="The questions Raiders actually search for, answered directly. Each one links out to the full guide section if you want the reasoning behind it."
+>
+  <div class="faq-list">
+    {faqs.map(item => (
+      <details class="faq-item">
+        <summary>{item.q}</summary>
+        <p>{item.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <div class="callout">
+    <p>
+      <strong>Growth note for the site owner:</strong> this page is the single
+      best long-tail traffic asset you have. Every question here should eventually
+      graduate into its own dedicated page with a URL matching how people search
+      it. Keep adding questions as you see them appear in Reddit threads and
+      search suggestions — one question, one page, one answer.
+    </p>
+  </div>
+</ContentLayout>
+
+<style>
+  .faq-list { display: flex; flex-direction: column; gap: 2px; }
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    padding: 16px 20px;
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+    color: var(--color-text);
+    list-style: none;
+    position: relative;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    color: var(--color-rust);
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item summary:hover { color: var(--color-rust-bright); }
+  .faq-item p {
+    padding: 0 20px 18px;
+    margin: 0;
+    font-size: 0.95rem;
+    max-width: none;
+  }
+</style>

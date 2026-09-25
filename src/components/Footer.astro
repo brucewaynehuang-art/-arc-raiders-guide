@@ -1,0 +1,115 @@
+---
+const sections = [
+  {
+    title: 'Guides',
+    links: [
+      { label: 'Beginner Checklist', href: '/getting-started' },
+      { label: 'All Maps', href: '/maps' },
+      { label: 'Weapon Tier List', href: '/weapons' },
+    ],
+  },
+  {
+    title: 'Systems',
+    links: [
+      { label: 'Skill Trees', href: '/loadouts' },
+      { label: 'Workshop & Crafting', href: '/workshop' },
+      { label: 'ARC Enemy Database', href: '/enemies' },
+    ],
+  },
+  {
+    title: 'Site',
+    links: [
+      { label: 'Latest Updates', href: '/seasons' },
+      { label: 'FAQ', href: '/faq' },
+    ],
+  },
+];
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <p class="brand-name">RUST<span>WATCH</span></p>
+      <p class="disclaimer">
+        Unofficial fan guide. Not affiliated with or endorsed by Embark Studios.
+        ARC Raiders and related assets are trademarks of their respective owners.
+      </p>
+    </div>
+    {sections.map(section => (
+      <div class="footer-col">
+        <h4>{section.title}</h4>
+        <ul>
+          {section.links.map(link => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+  <div class="container footer-bottom">
+    <p>© {new Date().getFullYear()} Rustwatch. All guide content written and maintained independently.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+    margin-top: 80px;
+    padding-top: 48px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 32px;
+    padding-bottom: 32px;
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 12px;
+  }
+  .brand-name span { color: var(--color-rust); }
+
+  .disclaimer {
+    font-size: 0.85rem;
+    max-width: 34ch;
+  }
+
+  .footer-col h4 {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 14px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-col a {
+    color: var(--color-text);
+    font-size: 0.9rem;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding: 20px 24px;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+
+  @media (max-width: 800px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

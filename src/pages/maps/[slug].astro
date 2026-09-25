@@ -1,0 +1,95 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { maps } from '../../data/game.js';
+
+export function getStaticPaths() {
+  return maps.map(m => ({ params: { slug: m.slug }, props: { map: m } }));
+}
+
+const { map } = Astro.props;
+const others = maps.filter(m => m.slug !== map.slug).slice(0, 3);
+---
+<ContentLayout
+  title={`${map.name} Map Guide`}
+  description={`${map.name} guide for ARC Raiders: points of interest, extraction routes, ARC spawns, and how to approach the map.`}
+  eyebrow={`Maps › ${map.name}`}
+  heading={map.name}
+  lede={map.blurb}
+>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead><tr><th>Difficulty</th><th>Best for</th></tr></thead>
+      <tbody><tr><td><strong>{map.difficulty}</strong></td><td>{map.bestFor}</td></tr></tbody>
+    </table>
+  </div>
+
+  {map.unlockNote && (
+    <div class="callout">
+      <p><strong>Unlock requirement:</strong> {map.unlockNote}</p>
+    </div>
+  )}
+
+  <h2>Map overview</h2>
+  <p>{map.overview}</p>
+
+  <h2>Points of interest</h2>
+  <div class="poi-grid">
+    {map.pois.map(poi => (
+      <article class="hud-card">
+        <h3>{poi.name}</h3>
+        <p>{poi.note}</p>
+      </article>
+    ))}
+  </div>
+
+  <h2>Extraction</h2>
+  <p>{map.extraction}</p>
+
+  {map.arcSpawns && (
+    <>
+      <h2>ARC patrol behavior</h2>
+      <p>{map.arcSpawns}</p>
+    </>
+  )}
+
+  <div class="callout">
+    <p>
+      <strong>Coordinates and live positions</strong> are deliberately left out
+      of this page. They shift between patches and are best checked against a
+      live interactive map or your own in-raid observation \u2014 publishing fixed
+      coordinates that later go stale is the fastest way to lose reader trust on
+      a guide site.
+    </p>
+  </div>
+
+  <h2>What you will run into</h2>
+  <p>
+    Read the <a href="/enemies">ARC enemy database</a> for weak points and
+    grenade matchups before running this map at its full difficulty rating.
+  </p>
+
+  <h2>Other maps</h2>
+  <div class="other-maps">
+    {others.map(m => (
+      <a class="hud-card" href={`/maps/${m.slug}`}>
+        <span class="tag">{m.difficulty}</span>
+        <h3>{m.name}</h3>
+        <p>Best for: {m.bestFor}</p>
+      </a>
+    ))}
+  </div>
+</ContentLayout>
+
+<style>
+  .poi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 20px 0 8px; }
+  .poi-grid h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .poi-grid p { font-size: 0.93rem; margin: 0; }
+  .other-maps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
+  .other-maps a { color: var(--color-text); }
+  .other-maps a:hover { text-decoration: none; border-color: var(--color-arc-teal); }
+  .other-maps p { font-size: 0.88rem; margin: 0; }
+  @media (max-width: 800px) {
+    .poi-grid { grid-template-columns: 1fr; }
+    .other-maps { grid-template-columns: 1fr; }
+  }
+</style>

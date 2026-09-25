@@ -1,0 +1,81 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+
+const timeline = [
+  { date: 'Oct 30, 2025', title: 'Launch', note: 'ARC Raiders releases on PC, PS5 and Xbox Series X|S. Built in Unreal Engine 5 by Embark Studios. Critically well received — Metacritic scores in the mid-to-high 80s across platforms.' },
+  { date: 'Nov 2025', title: 'North Line', note: 'Adds the Stella Montis map, a community unlock event, and the Matriarch and Shredder ARC machines.' },
+  { date: 'Dec 2025', title: 'Cold Snap', note: 'Snowfall map condition, the Flickering Flames event, an expedition departure window and a new Raider deck.' },
+  { date: 'Jan 2026', title: 'Headwinds', note: 'First major update of 2026, opening the four-update "Escalation" arc. Kettle fire rate cut from 600 to 450 RPM to counter macro abuse; grenade detonation delay raised from 0.7s to 1.5s.' },
+  { date: 'Mar 2026', title: 'Shrouded Sky (1.17.0)', note: 'Kettle base damage reduced from 10 to 8.5. Stitcher and Venator rebalanced. Older tier lists ranking these by pre-patch strength are no longer accurate.' },
+  { date: 'Apr 2026', title: 'Riven Tides (1.26.0)', note: 'Adds the coastal Riven Tides map with its own storm-themed map condition, plus the third expedition window.' },
+  { date: 'Jul 2026', title: 'THE FINALS crossover', note: 'Crossover event running July 9–30 with the Azimuth outfit and Archeologist backpack, a store redesign, solo/duo/trio matchmaking changes, and Queen/Matriarch fixes.' },
+  { date: 'Aug 18, 2026', title: 'Live Update 1.42.0', note: 'Regional Map Condition Scheduling introduced — condition timings now offset by region instead of running on one global clock. The Snitch can now call in a Rocketeer, or a Firefly and Hornet duo. Substantial footstep and movement audio rework.' },
+  { date: 'Sep 8–29, 2026', title: 'The Fifth Expedition', note: 'The final expedition of 2026. Introduces an opt-in quest progress reset for the first time, extends the window from two weeks to three, and removes the last-call grace period. Permanent rewards include the complete Zenith outfit, +12 stash space (60 cap) and up to 15 bonus skill points. Embark has said expeditions return in 2027 with major improvements.' },
+  { date: 'Oct 8, 2026', title: 'Frozen Trail', note: 'The next major update, and the start of a bi-annual major-update cadence. Cred is retired here — leftover Cred expires, replaced by a new reward system. Story-wise, Raiders follow phantom ARC signals toward the mountain range beyond the Tube system.' },
+];
+---
+<ContentLayout
+  title="Seasons & Updates"
+  description="ARC Raiders patch and season timeline: expeditions, map additions, weapon balance changes and what is coming next."
+  eyebrow="Seasons & Updates"
+  heading="What changed, and what it broke"
+  lede="Balance patches move weapon rankings and enemy behaviour constantly. This is the page to check first after any update — everything else on the site is written against these baselines."
+>
+  <div class="callout">
+    <p>
+      <strong>Current state:</strong> Embark moved to a bi-annual schedule for
+      major content updates in May 2026, beginning with Frozen Trail on October 8.
+      Smaller live updates continue between those milestones.
+    </p>
+  </div>
+
+  <h2>Update timeline</h2>
+  <ol class="timeline">
+    {timeline.map(t => (
+      <li class="timeline-item">
+        <div class="t-date">{t.date}</div>
+        <div class="t-body">
+          <h3>{t.title}</h3>
+          <p>{t.note}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+
+  <h2>Why this section matters most</h2>
+  <p>
+    For a guide site, update coverage is the fastest-moving traffic opportunity
+    there is. Search demand for a patch spikes within hours of it going live and
+    decays quickly. Publishing a clear breakdown the same day a patch drops
+    reliably outperforms a more polished piece published a week later.
+  </p>
+  <p>
+    Practical workflow: watch the official patch notes feed, publish a short
+    factual summary immediately, then go back and update the
+    <a href="/weapons">weapon tier list</a> and <a href="/enemies">enemy database</a>
+    to match. Both pages read from a single shared data file, so a balance change
+    is a one-file edit rather than a rewrite.
+  </p>
+</ContentLayout>
+
+<style>
+  .timeline { list-style: none; padding: 0; margin: 24px 0 0; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 24px;
+    padding: 22px 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .t-date {
+    font-family: var(--font-display);
+    color: var(--color-rust-bright);
+    font-size: 1rem;
+    padding-top: 2px;
+  }
+  .t-body h3 { font-size: 1.2rem; margin-bottom: 6px; }
+  .t-body p { font-size: 0.94rem; margin: 0; }
+  @media (max-width: 700px) {
+    .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+
+const checklist = [
+  { step: 'Understand what you are signing up for', detail: 'ARC Raiders is a third-person PvPvE extraction shooter set on Earth in 2180. Hostile machines called ARC drove humanity underground decades ago; you live in Speranza and go topside to scavenge. Everything you carry out is kept. Everything you die with is lost.' },
+  { step: 'Decide solo, duo or trio before you queue', detail: 'You can play alone or in teams of up to three. Matchmaking generally places solo players against other solos, so going alone is viable rather than suicidal. Since January 2026 solo players can also opt into the trio queue in exchange for higher rewards.' },
+  { step: 'Fix your stamina before anything else', detail: 'Your starting stamina is genuinely restrictive. Put your first five skill points into Marathon Runner in the Mobility tree and max it — the difference in how the game feels is larger than any weapon upgrade you can afford at this stage.' },
+  { step: 'Craft a Ferro on day one', detail: 'The Ferro battle rifle needs no blueprint and costs five metal parts and two rubber pieces. That is it. It performs at a level that competes with Rare and Epic weapons, so there is no reason to raid with anything worse while you learn.' },
+  { step: 'Start on Dam Battlegrounds', detail: 'It carries the lowest risk of any map in the rotation and is the standard community recommendation for learning. Buried City has the heaviest player traffic in the game — that is where you go once you can fight, not while you are still learning where the extraction points are.' },
+  { step: 'Loot small compounds, not named landmarks', detail: 'Named points of interest and boss areas pull both player and ARC attention. Smaller unnamed compounds still supply the metal, rubber and ARC parts your crafting actually runs on, at a fraction of the risk.' },
+  { step: 'Know your extraction before you loot', detail: 'Identify your nearest extraction point on arrival, not when your bag is full and something is shooting at you. A modest successful extraction beats a full bag you never got out with.' },
+];
+---
+<ContentLayout
+  title="Getting Started"
+  description="A beginner's guide to ARC Raiders: the core loop, your first loadout, which map to learn on, and the early skill points that matter most."
+  eyebrow="Getting Started"
+  heading="Your first raid, without the panic"
+  lede="ARC Raiders does not hold your hand. These are the decisions that actually determine whether your first week is productive or a string of total losses."
+>
+  <h2>The core loop</h2>
+  <p>
+    Every raid follows the same shape: you drop into one of six maps, scavenge
+    materials from containers and caches, avoid or fight ARC machines and rival
+    Raiders, and then leave through an extraction point. Dynamic weather, time of
+    day and rotating map conditions keep each run from feeling identical.
+  </p>
+  <p>
+    Materials you extract feed your workshop back in Speranza, which unlocks
+    better crafting, which lets you take more risk on the next run. That loop is
+    the whole game. Dying breaks it, which is why extraction discipline matters
+    more than aim in your first twenty hours.
+  </p>
+
+  <h2>Pre-raid checklist</h2>
+  <ol class="checklist">
+    {checklist.map(item => (
+      <li class="hud-card">
+        <h3>{item.step}</h3>
+        <p>{item.detail}</p>
+      </li>
+    ))}
+  </ol>
+
+  <div class="callout">
+    <p>
+      <strong>The single biggest new-player mistake:</strong> hoarding good gear
+      in your stash and raiding with junk. Gear you never use has no value. Craft
+      Ferros, run them, lose some, craft more.
+    </p>
+  </div>
+
+  <h2>What to do next</h2>
+  <p>
+    Once you have extracted a few times successfully, the three pages worth
+    reading in order are the <a href="/loadouts">skill tree guide</a> (so you stop
+    spending points badly), the <a href="/weapons">weapon tier list</a> (so you
+    know what to chase), and the <a href="/enemies">ARC enemy database</a> (so you
+    stop wasting ammo shooting armor plating).
+  </p>
+</ContentLayout>
+
+<style>
+  .checklist { list-style: none; margin: 24px 0 8px; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  .checklist li h3 { margin-bottom: 8px; font-size: 1.12rem; }
+  .checklist li p { font-size: 0.95rem; margin: 0; }
+</style>

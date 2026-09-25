@@ -1,0 +1,74 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+---
+<ContentLayout
+  title="Workshop & Crafting"
+  description="ARC Raiders crafting guide: blueprints, materials, gunsmith upgrades and what to build first in your Speranza workshop."
+  eyebrow="Workshop & Crafting"
+  heading="What to build, and in what order"
+  lede="Your workshop is the reason to extract. Materials you carry out convert into better gear, which lets you take bigger risks on the next run — but only if you spend them in the right order."
+>
+  <h2>How crafting is gated</h2>
+  <p>
+    Weapons fall into two categories. A small number — the Ferro and Stitcher
+    among them — are craftable from the start with no blueprint requirement. The
+    majority are blueprint-locked: crafting does not unlock at all until you find
+    the blueprint. Blueprints drop during raids, and some blueprint-locked
+    weapons can be bought outright from a dealer instead, which is often faster
+    than waiting on the drop.
+  </p>
+  <p>
+    Separately, your Gunsmith level gates which weapon ranks you can produce.
+    Rank IV variants are a meaningful step up rather than a marginal one, so
+    Gunsmith progression is worth prioritising over breadth.
+  </p>
+
+  <h2>Materials worth stopping for</h2>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead><tr><th>Material</th><th>Used for</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Metal parts</strong></td><td>Core weapon crafting — a Ferro costs five.</td><td>Always pick up</td></tr>
+        <tr><td><strong>Rubber</strong></td><td>Weapon crafting alongside metal.</td><td>Always pick up</td></tr>
+        <tr><td><strong>Steel springs</strong></td><td>Weapon attachments.</td><td>High</td></tr>
+        <tr><td><strong>ARC parts</strong></td><td>Upgrades. Comes off destroyed machines.</td><td>High</td></tr>
+        <tr><td><strong>ARC Alloy</strong></td><td>Higher-tier crafting. Drops from heavy ARC and bosses.</td><td>High, situational</td></tr>
+        <tr><td><strong>Advanced ARC Powercell</strong></td><td>Endgame crafting. Boss drop.</td><td>Take every one you see</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <p>
+      <strong>Author note:</strong> exact recipe costs beyond the well-documented
+      ones above shift with balance patches. Verify current numbers against the
+      in-game crafting screen before publishing a full recipe table — outdated
+      material costs are the fastest way to lose reader trust.
+    </p>
+  </div>
+
+  <h2>Build order for a new Raider</h2>
+  <ol class="ordered">
+    <li><strong>Ferro, repeatedly.</strong> No blueprint, cheap, punches far above its rarity. Craft several and accept that you will lose some.</li>
+    <li><strong>Gunsmith upgrades.</strong> Access to higher weapon ranks changes more than any single new gun will.</li>
+    <li><strong>Stash and storage capacity.</strong> Running out of room is a real constraint, and expeditions add permanent stash space on top.</li>
+    <li><strong>Anvil access.</strong> Either find the blueprint or buy it from a dealer. It becomes your default secondary for a long time.</li>
+    <li><strong>Attachment production.</strong> Muzzle brakes, grips and silencers change weapon feel substantially — a Silencer III on a Tempest makes it one of the quietest options in the game.</li>
+  </ol>
+
+  <h2>Currencies</h2>
+  <p>
+    Coins are the general-purpose currency and the main reason to farm high-value
+    maps like Buried City and Stella Montis. The Cred system has been retired —
+    Embark confirmed leftover Cred expired with the October 8, 2026 Frozen Trail
+    update, replaced by a new reward system. Rewards already claimed were kept.
+    Check the <a href="/seasons">Seasons &amp; Updates</a> page for the current
+    state of this, since it changed recently.
+  </p>
+</ContentLayout>
+
+<style>
+  .ordered { padding-left: 20px; color: var(--color-text-muted); }
+  .ordered li { margin-bottom: 12px; font-size: 0.96rem; }
+  .ordered strong { color: var(--color-text); }
+</style>

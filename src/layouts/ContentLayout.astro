@@ -1,0 +1,81 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  heading: string;
+  lede: string;
+}
+
+const { title, description, eyebrow, heading, lede } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{heading}</h1>
+      <p class="lede">{lede}</p>
+    </div>
+  </section>
+  <div class="container page-body">
+    <slot />
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .page-hero {
+    padding: 64px 0 44px;
+    border-bottom: 1px solid var(--color-border);
+    background: linear-gradient(170deg, var(--color-surface) 0%, var(--color-bg) 100%);
+  }
+  .page-hero .eyebrow {
+    font-family: var(--font-display);
+    color: var(--color-arc-teal);
+    margin-bottom: 12px;
+    font-size: 1rem;
+  }
+  .page-hero .lede { font-size: 1.12rem; max-width: 68ch; }
+  .page-body { padding: 56px 0 100px; }
+  .page-body h2 { margin-top: 48px; }
+  .page-body h2:first-child { margin-top: 0; }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 32px;
+    font-size: 0.94rem;
+  }
+  .data-table th, .data-table td {
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+  .data-table th {
+    font-family: var(--font-display);
+    color: var(--color-text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .data-table td { color: var(--color-text-muted); }
+  .data-table td strong { color: var(--color-text); }
+  .table-scroll { overflow-x: auto; }
+
+  .threat { font-weight: 600; white-space: nowrap; }
+  .threat-low { color: var(--color-arc-teal); }
+  .threat-medium, .threat-medium-escalating { color: #9AA85C; }
+  .threat-high { color: var(--color-rust-bright); }
+  .threat-very-high { color: var(--color-rust); }
+  .threat-extreme { color: var(--color-danger); }
+
+  .callout {
+    border-left: 3px solid var(--color-arc-teal);
+    background: var(--color-surface);
+    padding: 16px 20px;
+    margin: 28px 0;
+  }
+  .callout p { margin: 0; font-size: 0.95rem; }
+  .callout strong { color: var(--color-text); }
+</style>

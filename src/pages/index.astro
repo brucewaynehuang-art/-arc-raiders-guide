@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { maps, PATCH } from '../data/game.js';
+
+const pillars = [
+  { tag: '01 — START HERE', title: 'Getting Started', desc: 'The core loop, your first raid, and the handful of decisions that decide whether you extract or lose everything.', href: '/getting-started' },
+  { tag: '02 — TERRAIN', title: 'Maps', desc: 'All six battlegrounds, what each one is actually good for, and how map conditions change the rules mid-rotation.', href: '/maps' },
+  { tag: '03 — ARSENAL', title: 'Weapons', desc: 'Every weapon ranked S through C, with crafting costs, blueprint requirements and the patch changes that moved them.', href: '/weapons' },
+  { tag: '04 — BUILDS', title: 'Skills & Loadouts', desc: 'Mobility, Survival and Conditioning broken down, plus the spending order that stops you wasting limited points.', href: '/loadouts' },
+  { tag: '05 — PROGRESSION', title: 'Workshop & Crafting', desc: 'Blueprints, crafting materials, and what to build first once you are back in Speranza.', href: '/workshop' },
+  { tag: '06 — THREATS', title: 'ARC Enemies', desc: 'Every machine from Ticks to the Queen, with weak points, stagger windows and the grenades that actually work.', href: '/enemies' },
+];
+---
+<BaseLayout
+  title="ARC Raiders Guide"
+  description="Independent ARC Raiders guide: all six maps, a full weapon tier list, skill tree builds, crafting priorities and ARC enemy weak points, updated each patch."
+>
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">Unofficial Raider field manual · {PATCH.label}</p>
+      <h1>Survive topside.<br />Extract with everything.</h1>
+      <p class="hero-sub">
+        ARC Raiders drops you into the Rust Belt of 2180 to scavenge among hostile
+        machines and rival Raiders, then get out alive. This is the field manual
+        for doing that consistently — maps, weapons, builds and threat data.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="/getting-started">Start your first raid</a>
+        <a class="btn btn-outline" href="/weapons">Weapon tier list</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pillars">
+    <h2>Field manual sections</h2>
+    <div class="pillar-grid">
+      {pillars.map(p => (
+        <a class="hud-card pillar-card" href={p.href}>
+          <span class="tag">{p.tag}</span>
+          <h3>{p.title}</h3>
+          <p>{p.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container quick-pick">
+    <h2>Pick a map by what you need</h2>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr><th>Map</th><th>Difficulty</th><th>Best for</th></tr>
+        </thead>
+        <tbody>
+          {maps.map(m => (
+            <tr>
+              <td><strong><a href={`/maps/${m.slug}`}>{m.name}</a></strong></td>
+              <td>{m.difficulty}</td>
+              <td>{m.bestFor}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="container latest">
+    <h2>Where the game is right now</h2>
+    <p>{PATCH.note}</p>
+    <p>
+      Full coverage of expeditions, map conditions and balance changes lives in
+      the <a href="/seasons">Seasons &amp; Updates</a> section — that is the page
+      to check first after any patch, since weapon rankings and enemy behaviour
+      both shift with it.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(160deg, var(--color-surface) 0%, var(--color-bg) 60%);
+    padding: 100px 0 90px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .hero-inner { max-width: 760px; }
+  .eyebrow { font-family: var(--font-display); color: var(--color-arc-teal); font-size: 1rem; margin-bottom: 18px; }
+  .hero-sub { font-size: 1.15rem; margin-bottom: 32px; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .pillars { padding: 90px 0 40px; }
+  .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
+  .pillar-card { display: block; color: var(--color-text); }
+  .pillar-card:hover { text-decoration: none; border-color: var(--color-arc-teal); }
+  .pillar-card p { font-size: 0.95rem; }
+  .quick-pick { padding: 60px 0 20px; }
+  .latest { padding: 40px 0 100px; border-top: 1px solid var(--color-border); margin-top: 40px; }
+  @media (max-width: 900px) { .pillar-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .pillar-grid { grid-template-columns: 1fr; } }
+</style>

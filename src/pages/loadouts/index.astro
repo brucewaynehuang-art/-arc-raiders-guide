@@ -1,0 +1,94 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { skillTrees } from '../../data/game.js';
+
+const builds = [
+  { name: 'Balanced (recommended default)', split: 'Mobility first, then Survival, then Conditioning', note: 'Mobility gets you to the loot, Survival maximises what you extract, Conditioning keeps you alive long enough to use it. A rough 2-1-1 split per four points keeps all three progressing without stranding you.' },
+  { name: 'Solo looter', split: 'Heavy Survival, Mobility base', note: 'Max Gentle Pressure early to mask looting noise, take Calming Stroll for constant stamina recovery, and prioritise Back on Your Feet. Skip team-oriented skills like Downed But Determined entirely — nobody is coming to pick you up.' },
+  { name: 'Aggressive PvP', split: 'Mobility + Conditioning', note: 'Effortless Roll and Carry the Momentum give you the movement edge in duels; Conditioning clutch skills turn losing fights into escapes. Sacrifices loot efficiency for survivability.' },
+  { name: 'Breacher / squad support', split: 'Conditioning + Survival', note: 'Proficient Pryer and Security Breach let you open what the rest of the lobby cannot. Slower solo, extremely valuable in a trio.' },
+];
+---
+<ContentLayout
+  title="Skills & Loadouts"
+  description="ARC Raiders skill tree guide: Mobility, Survival and Conditioning broken down, the best skills to unlock first, and build paths for solo, PvP and squad play."
+  eyebrow="Skills & Loadouts"
+  heading="Spend your points like they are limited, because they are"
+  lede="You get roughly 75 base skill points and there are no free respecs. The tree does not hand out raw damage — it hands out stamina, stealth, looting efficiency and recovery, which is what actually decides raids."
+>
+  <div class="callout">
+    <p>
+      <strong>If you read nothing else:</strong> max Marathon Runner in the
+      Mobility tree with your first five points, before touching anything else.
+      Starting stamina is the single worst part of an early Raider and this fixes
+      it more than any other option available at that level.
+    </p>
+  </div>
+
+  <h2>The three trees</h2>
+  {skillTrees.map(tree => (
+    <section class="tree-block">
+      <h3>{tree.name}</h3>
+      <p class="focus"><strong>Focus:</strong> {tree.focus}</p>
+      <p class="verdict">{tree.verdict}</p>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead><tr><th>Skill</th><th>What it does</th></tr></thead>
+          <tbody>
+            {tree.keySkills.map(s => (
+              <tr><td><strong>{s.name}</strong></td><td>{s.note}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))}
+
+  <h2>Spending order</h2>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead><tr><th>Levels</th><th>Focus</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1–15</strong></td><td>Pure Mobility. Get Marathon Runner maxed and Youthful Lungs online.</td></tr>
+        <tr><td><strong>16–30</strong></td><td>Add Conditioning basics — Used to the Weight and Survivor's Stamina.</td></tr>
+        <tr><td><strong>31–50</strong></td><td>Round out Survival. In-Round Crafting typically unlocks around level 36; Security Breach needs 36 points in the tree.</td></tr>
+        <tr><td><strong>50+</strong></td><td>Specialise toward your actual playstyle rather than spreading thin.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Focused builds consistently outperform jack-of-all-trades spreads. Resist the
+    urge to put a point everywhere.
+  </p>
+
+  <h2>Build templates</h2>
+  <div class="build-grid">
+    {builds.map(b => (
+      <article class="hud-card">
+        <span class="tag">{b.split}</span>
+        <h3>{b.name}</h3>
+        <p>{b.note}</p>
+      </article>
+    ))}
+  </div>
+
+  <h2>Expedition skill points</h2>
+  <p>
+    Expeditions reset your character but grant permanent bonus skill points on
+    top of the base pool, currently capped at 15, alongside permanent stash space
+    increases. Embark has confirmed the expedition reward structure is temporary
+    and will change once players cap out their bonus points — so build around the
+    base tree, not around expedition bonuses you may not keep earning.
+  </p>
+</ContentLayout>
+
+<style>
+  .tree-block { margin-bottom: 40px; }
+  .tree-block h3 { font-size: 1.5rem; color: var(--color-rust-bright); }
+  .focus { margin-bottom: 6px; font-size: 0.92rem; }
+  .focus strong { color: var(--color-text); }
+  .verdict { font-size: 0.98rem; }
+  .build-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+  .build-grid p { font-size: 0.93rem; margin: 0; }
+  @media (max-width: 800px) { .build-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,62 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { enemies } from '../../data/game.js';
+
+const slug = (t) => t.toLowerCase().replace(/[^a-z]+/g, '-');
+---
+<ContentLayout
+  title="ARC Enemy Database"
+  description="Every ARC machine in ARC Raiders with weak points, stagger windows, grenade counters and loot drops — from Ticks to the Queen."
+  eyebrow="ARC Enemies"
+  heading="Every machine, and how to break it"
+  lede="ARC armor follows a consistent colour system. Learning to read it is the difference between a twenty-round kill and burning half your ammo on plating."
+>
+  <h2>Read the armor before you shoot</h2>
+  <p>
+    ARC machines use three armor states, and they are visible. White parts are
+    unarmored and take full damage from any weapon — this is your default aim
+    point when nothing better is exposed. Grey parts are armored and soak damage.
+    Yellow marks a genuine weak point, and hitting one is worth repositioning
+    for.
+  </p>
+  <div class="callout">
+    <p>
+      <strong>Sticky grenades matter.</strong> Several weak points — the Bastion's
+      back panel in particular — can only be reached reliably with a grenade that
+      sticks. Bouncing grenades slide off. Carry Snap Hooks or Triggers if you
+      expect heavy ARC.
+    </p>
+  </div>
+
+  <h2>Full enemy database</h2>
+  <div class="enemy-list">
+    {enemies.map(e => (
+      <article class="hud-card enemy-card">
+        <span class={`tag threat threat-${slug(e.threat)}`}>Threat: {e.threat}</span>
+        <h3>{e.name}</h3>
+        <p class="weak"><strong>Weak point:</strong> {e.weakPoint}</p>
+        <p>{e.strategy}</p>
+        {e.loot && <p class="loot"><strong>Notable drops:</strong> {e.loot}</p>}
+      </article>
+    ))}
+  </div>
+
+  <h2>Bosses are not solo content</h2>
+  <p>
+    The Matriarch and the Queen are built for coordinated teams with full heavy
+    loadouts and grenade stocks. Solo kills exist and get posted, but they are
+    endurance runs rather than a reasonable farming strategy. If you want boss
+    loot consistently, bring a trio, bring Wolfpacks, and farm on
+    <a href="/maps/dam-battlegrounds"> Dam Battlegrounds</a>.
+  </p>
+</ContentLayout>
+
+<style>
+  .enemy-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+  .enemy-card p { font-size: 0.93rem; }
+  .enemy-card .weak { margin-bottom: 10px; }
+  .enemy-card .weak strong, .enemy-card .loot strong { color: var(--color-text); }
+  .enemy-card .loot { margin-bottom: 0; font-size: 0.86rem; }
+  .enemy-card .tag { border-bottom-color: currentColor; }
+  @media (max-width: 800px) { .enemy-list { grid-template-columns: 1fr; } }
+</style>

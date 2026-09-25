@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+  /* Color tokens — cold steel + rust warning + ARC-tech teal */
+  --color-bg: #12161B;
+  --color-surface: #1C2228;
+  --color-surface-raised: #232B33;
+  --color-rust: #C9722C;
+  --color-rust-bright: #E08A3E;
+  --color-arc-teal: #4FB3A9;
+  --color-text: #E8E6DF;
+  --color-text-muted: #8C949B;
+  --color-border: #333C44;
+  --color-danger: #B5473A;
+
+  /* Type */
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+
+  --max-width: 1180px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--color-bg);
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.05;
+  margin: 0 0 0.5em;
+  letter-spacing: 0.01em;
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+
+p { color: var(--color-text-muted); max-width: 70ch; }
+
+a { color: var(--color-arc-teal); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* HUD corner-bracket card — replaces generic rounded card */
+.hud-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 28px;
+}
+
+.hud-card::before,
+.hud-card::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-rust);
+}
+
+.hud-card::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.hud-card::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.hud-card h3 { color: var(--color-text); }
+.hud-card .tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--color-rust-bright);
+  border-bottom: 1px solid var(--color-rust);
+  padding-bottom: 2px;
+  margin-bottom: 12px;
+}
+
+/* Diagonal-cut section divider — evokes torn/salvaged metal edge */
+.section-cut {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 24px));
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-bg);
+  background: var(--color-rust);
+  padding: 12px 28px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover { background: var(--color-rust-bright); text-decoration: none; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-outline:hover { border-color: var(--color-arc-teal); color: var(--color-arc-teal); }
+
+code, .mono {
+  font-family: 'IBM Plex Mono', monospace;
+}

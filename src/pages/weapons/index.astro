@@ -1,0 +1,87 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { weaponTiers, PATCH } from '../../data/game.js';
+---
+<ContentLayout
+  title="Weapon Tier List"
+  description="ARC Raiders weapon tier list: every gun ranked S through C with crafting costs, blueprint requirements, and the balance changes that moved them."
+  eyebrow="Weapons"
+  heading="Weapon Tier List"
+  lede="Roughly two dozen weapons across six ammo types. Ranked here on three things at once — PvP performance, effectiveness against ARC armor, and what it costs you to put one in your hands."
+>
+  <div class="callout">
+    <p>
+      <strong>Patch baseline: {PATCH.label}.</strong> Weapon balance moves often.
+      Rankings that ignore the Kettle nerfs or the 1.17.0 rebalance are stale —
+      check the date on any tier list before trusting it, including this one.
+    </p>
+  </div>
+
+  {weaponTiers.map(tier => (
+    <section class="tier-block">
+      <div class="tier-head">
+        <div class="tier-badge" style={`color:${tier.color}; border-color:${tier.color}`}>{tier.rank}</div>
+        <p class="tier-summary">{tier.summary}</p>
+      </div>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead><tr><th>Weapon</th><th>Type</th><th>Why it lands here</th></tr></thead>
+          <tbody>
+            {tier.weapons.map(w => (
+              <tr><td><strong>{w.name}</strong></td><td>{w.type}</td><td>{w.note}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))}
+
+  <h2>How to actually get these</h2>
+  <p>
+    Weapons split into two groups. A handful — the Ferro and Stitcher among them —
+    need no blueprint and can be crafted from the moment you start, which is why
+    the Ferro dominates value rankings. The majority are blueprint-dependent:
+    you have to find the blueprint before crafting unlocks at all. Blueprints
+    drop in raids, and some weapons like the Anvil can be bought outright from a
+    dealer if the blueprint refuses to appear.
+  </p>
+  <p>
+    Raise your Gunsmith level to access higher weapon ranks. Rank IV variants are
+    meaningfully different weapons, not marginal upgrades — a Tempest at Rank IV
+    with a Tier 3 medium magazine is a different gun from the one you first found.
+  </p>
+
+  <h2>Do not judge by rarity</h2>
+  <p>
+    The clearest example is the Ferro: a cheap, common, blueprint-free battle
+    rifle that outperforms several Rare and Epic weapons. Meanwhile the Hullcracker
+    deals no damage at all to other players despite being an excellent tool, and
+    the Equalizer's visible beam gives your position away to everything nearby.
+    Rarity describes acquisition cost, not raid performance.
+  </p>
+
+  <h2>Recommended starting pairs</h2>
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead><tr><th>Stage</th><th>Primary</th><th>Secondary</th></tr></thead>
+      <tbody>
+        <tr><td><strong>First raids</strong></td><td>Ferro</td><td>Stitcher</td></tr>
+        <tr><td><strong>Once heavy ammo is sustainable</strong></td><td>Ferro or Renegade</td><td>Anvil</td></tr>
+        <tr><td><strong>ARC-heavy runs</strong></td><td>Hullcracker</td><td>Anvil</td></tr>
+        <tr><td><strong>PvP-focused</strong></td><td>Tempest or Bobcat</td><td>Anvil</td></tr>
+      </tbody>
+    </table>
+  </div>
+</ContentLayout>
+
+<style>
+  .tier-block { margin-bottom: 44px; }
+  .tier-head { display: flex; align-items: center; gap: 20px; margin-bottom: 4px; }
+  .tier-badge {
+    width: 58px; height: 58px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 2rem; font-weight: 700;
+    border: 2px solid;
+  }
+  .tier-summary { margin: 0; font-size: 0.98rem; }
+</style>
