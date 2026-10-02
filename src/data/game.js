@@ -18,7 +18,7 @@ export const maps = [
       { name: 'Electrical Substations', note: 'Low-risk battery and material farming. A safe first stop on any run.' },
       { name: 'Research & Administration', note: 'The map\u2019s high-value, high-risk zone. Better gear here, more ARC and player attention.' },
     ],
-    extraction: 'Extraction points here are generally forgiving compared to the rest of the rotation \u2014 the whole reason the map is the standard beginner recommendation. Identify your nearest one on landing and treat the rest of the raid as a bonus.',
+    extraction: 'Extraction points here are generally forgiving compared to the rest of the rotation \u2014 the whole reason the map is the standard beginner recommendation. The map runs on cargo elevators (the loud, ~90-second type also used on Spaceport) plus several silent Raider Hatches for players carrying a key. Community naming for the specific elevators and hatches (seen across guides as things like a Central Swamp Lift, a North Complex Elevator, and a handful of named hatches near the Pump House and Red Lakes) is inconsistent between sources and has shifted with past updates \u2014 treat specific names as a rough starting point, not gospel, and confirm what is actually live from the in-raid map each run. Identify your nearest option on landing and treat the rest of the raid as a bonus.',
     unlockNote: null,
   },
   {
@@ -78,7 +78,7 @@ export const maps = [
       { name: 'Cultural Archives', note: 'Strong loot, but largely locked behind a key.' },
       { name: 'Seed Vault', note: 'Requires fuel cells to access. Contains scattered seed loot plus decent general containers and weapon crates nearby.' },
     ],
-    extraction: 'Airshaft Extract sits at the far end of the map from most spawns and is comparatively safe. Metro station extracts are fine outside of hot lobbies, but dangerous in a heavily PvP-populated match.',
+    extraction: 'Stella Montis mixes the two quieter extraction types in the game \u2014 Metro stations (shared with Buried City) and Airshafts (shared with Blue Gate) \u2014 rather than the loud cargo elevators used on Dam and Spaceport. The map\u2019s small footprint means it has fewer total extraction points than the larger maps, so a fallback option matters more here: know at least two before you commit to looting. An Airshaft Extract toward the map\u2019s edge, away from most spawns, is commonly cited as the comparatively safe default; Metro extracts are fine outside hot lobbies but risky in a heavily PvP-populated match.',
     unlockNote: 'Unlocks after 24 raids played. Two specific weapon blueprints \u2014 including the Tempest \u2014 only drop here during night raids.',
     arcSpawns: 'Fewer enemies overall than most maps. Bastion is the only boss ARC present; Shredder is the map\u2019s unique enemy and demands careful positioning.',
   },
@@ -94,7 +94,7 @@ export const maps = [
       { name: 'Stacking Yard', note: 'Strong industrial loot with dangerous sightlines and patrolling ARC. Contains a two-player secret room puzzle requiring several batteries.' },
       { name: 'Wave Breaker / Seabed', note: 'Exposed beachfront with no rooms to hide in \u2014 Vaporizers roam here. Becomes the best loot location on the map once the Beachcombing event is active; a Dockmaster\u2019s Detector (from the Avian Alarm project) reveals buried valuables.' },
     ],
-    extraction: 'Use beach access when running light and prioritising speed; use the elevated industrial platforms when carrying a full kit or in a contested lobby, since they are harder to camp from below. Flag both options before you start looting rather than after.',
+    extraction: 'As the newest map, Riven Tides has the least settled community documentation on its exact extraction layout \u2014 treat anything you read about it, this page included, as more provisional than the older maps. Use beach access when running light and prioritising speed; use the elevated industrial platforms when carrying a full kit or in a contested lobby, since they are harder to camp from below. Flag both options before you start looting rather than after.',
     unlockNote: 'Unlocks after 20 raids played.',
   },
 ];
